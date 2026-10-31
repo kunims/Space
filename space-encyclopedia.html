@@ -1,0 +1,1012 @@
+<title>우주산업 백과사전</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap">
+
+<style>
+/* Metro design: flat color tiles, bold type, 2px-gap grid, no shadows */
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a2e;
+  --fg-secondary: #4a4a6a;
+  --fg-muted: #75759a;
+  --surface: #f4f5f7;
+  --tile-blue: #0078d4;
+  --tile-orange: #d9530a;
+  --tile-green: #00894a;
+  --tile-purple: #6b2ae0;
+  --tile-red: #d62f3d;
+  --tile-teal: #0088a8;
+  --tile-yellow: #b97a00;
+  --tile-navy: #16213e;
+  --accent: #0078d4;
+  --border: #e0e2e8;
+  --card-bg: #ffffff;
+  --hero-bg: #0a1628;
+  --tag-bg: rgba(0,120,212,0.08);
+  --tag-fg: #0066b8;
+  --chart-text: #0b0b0b;
+  --chart-text-secondary: #52514e;
+  --chart-grid: #e8e8e4;
+  --series-1: #0078d4;
+  --series-proj: #7fb5e6;
+  --series-muted: #a9b4c4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0a0a1a;
+    --fg: #e8e8f0;
+    --fg-secondary: #b0b0c8;
+    --fg-muted: #8a8aa8;
+    --surface: #141428;
+    --tile-blue: #1f7fd0;
+    --tile-orange: #c9520e;
+    --tile-green: #0a8a50;
+    --tile-purple: #7a45e0;
+    --tile-red: #c9374a;
+    --tile-teal: #0a8aa6;
+    --tile-yellow: #a87400;
+    --tile-navy: #1e2d50;
+    --accent: #3399ee;
+    --border: #2a2a44;
+    --card-bg: #141428;
+    --hero-bg: #060e1e;
+    --tag-bg: rgba(51,153,238,0.12);
+    --tag-fg: #5aaef2;
+    --chart-text: #f0efec;
+    --chart-text-secondary: #c3c2b7;
+    --chart-grid: #2c2c3c;
+    --series-1: #3399ee;
+    --series-proj: #2a5f8f;
+    --series-muted: #4a5468;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0a1a;
+  --fg: #e8e8f0;
+  --fg-secondary: #b0b0c8;
+  --fg-muted: #8a8aa8;
+  --surface: #141428;
+  --tile-blue: #1f7fd0;
+  --tile-orange: #c9520e;
+  --tile-green: #0a8a50;
+  --tile-purple: #7a45e0;
+  --tile-red: #c9374a;
+  --tile-teal: #0a8aa6;
+  --tile-yellow: #a87400;
+  --tile-navy: #1e2d50;
+  --accent: #3399ee;
+  --border: #2a2a44;
+  --card-bg: #141428;
+  --hero-bg: #060e1e;
+  --tag-bg: rgba(51,153,238,0.12);
+  --tag-fg: #5aaef2;
+  --chart-text: #f0efec;
+  --chart-text-secondary: #c3c2b7;
+  --chart-grid: #2c2c3c;
+  --series-1: #3399ee;
+  --series-proj: #2a5f8f;
+  --series-muted: #4a5468;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  line-height: 1.7;
+  word-break: keep-all;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+.wrapper { max-width: 1100px; margin: 0 auto; }
+.num-font { font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif; }
+
+/* Hero */
+.hero {
+  background: var(--hero-bg);
+  color: #fff;
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-block: 60px 50px;
+  padding-left: max(32px, env(safe-area-inset-left, 0px));
+  padding-right: max(32px, env(safe-area-inset-right, 0px));
+  position: relative;
+  overflow: hidden;
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-tag {
+  display: inline-block; background: var(--tile-blue); color: #fff;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+  padding: 4px 12px; margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2;
+  text-wrap: balance; margin-bottom: 14px;
+}
+.hero h1 em { font-style: normal; color: #4fd2f0; }
+.hero-sub { font-size: clamp(0.95rem, 2vw, 1.1rem); color: rgba(255,255,255,0.75); max-width: 640px; line-height: 1.65; }
+.hero-stars { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 3s ease-in-out infinite alternate; opacity: 0.5; }
+@keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 0.9; } }
+@media (prefers-reduced-motion: reduce) { .star { animation: none; } }
+
+/* Nav */
+.nav-bar {
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  background: var(--surface);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  border-bottom: 2px solid var(--accent);
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 100;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 101; background: var(--surface);
+}
+.nav-bar a {
+  display: block; padding: 12px 16px; font-size: 0.85rem; font-weight: 700;
+  color: var(--fg-secondary); text-decoration: none;
+  border-bottom: 3px solid transparent; white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-bar a:hover, .nav-bar a:focus-visible { color: var(--accent); border-bottom-color: var(--accent); outline: none; }
+
+/* Stat tiles */
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; margin: 40px 0 16px; }
+.stat-tile { padding: 26px 22px; color: #fff; }
+.stat-tile:nth-child(1) { background: var(--tile-blue); }
+.stat-tile:nth-child(2) { background: var(--tile-orange); }
+.stat-tile:nth-child(3) { background: var(--tile-green); }
+.stat-tile:nth-child(4) { background: var(--tile-purple); }
+.stat-value { font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif; font-size: 2.1rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat-label { font-size: 0.82rem; font-weight: 500; opacity: 0.9; margin-top: 8px; }
+.stat-src { font-size: 0.7rem; opacity: 0.7; margin-top: 4px; }
+
+/* Key takeaway */
+.takeaway {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: start;
+  background: var(--surface); padding: 22px 24px; margin-bottom: 8px;
+}
+.takeaway .lbl { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; color: #fff; background: var(--tile-navy); padding: 4px 10px; }
+.takeaway p { font-size: 0.95rem; line-height: 1.7; }
+
+/* Section */
+.section { padding: 48px 0 24px; }
+.section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.section-icon {
+  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; color: #fff; flex-shrink: 0;
+}
+.section-icon.blue { background: var(--tile-blue); }
+.section-icon.orange { background: var(--tile-orange); }
+.section-icon.green { background: var(--tile-green); }
+.section-icon.purple { background: var(--tile-purple); }
+.section-icon.teal { background: var(--tile-teal); }
+.section-icon.red { background: var(--tile-red); }
+.section-icon.navy { background: var(--tile-navy); }
+.section-title { font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif; font-size: 1.5rem; font-weight: 700; text-wrap: balance; line-height: 1.3; }
+.section-desc { color: var(--fg-secondary); font-size: 0.95rem; max-width: 760px; margin-bottom: 24px; }
+
+/* Metro grid */
+.metro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
+.metro-card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px 22px 24px 26px; position: relative; min-width: 0; }
+.metro-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+.c-blue::before { background: var(--tile-blue); }
+.c-orange::before { background: var(--tile-orange); }
+.c-green::before { background: var(--tile-green); }
+.c-purple::before { background: var(--tile-purple); }
+.c-teal::before { background: var(--tile-teal); }
+.c-red::before { background: var(--tile-red); }
+.c-yellow::before { background: var(--tile-yellow); }
+.c-navy::before { background: var(--tile-navy); }
+.metro-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
+.metro-card p { font-size: 0.88rem; color: var(--fg-secondary); line-height: 1.7; }
+.metro-card p + p { margin-top: 8px; }
+.card-tag { display: inline-block; background: var(--tag-bg); color: var(--tag-fg); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; margin-bottom: 10px; letter-spacing: 0.04em; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.tl-item { position: relative; padding-bottom: 26px; }
+.tl-item::before { content: ''; position: absolute; left: -27px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+.tl-item.done::before { background: var(--tile-green); }
+.tl-item.progress::before { background: var(--tile-orange); }
+.tl-item.future::before { background: var(--tile-purple); }
+.tl-year { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 2px; }
+.tl-title { font-weight: 700; font-size: 1rem; margin-bottom: 2px; }
+.tl-desc { font-size: 0.86rem; color: var(--fg-secondary); line-height: 1.65; max-width: 760px; }
+.tl-legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.75rem; color: var(--fg-secondary); margin-bottom: 18px; }
+.tl-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.tl-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* Chart container */
+.chart-wrap { background: var(--card-bg); border: 1px solid var(--border); padding: 26px 24px; margin: 20px 0; min-width: 0; }
+.chart-wrap h4 { font-size: 0.98rem; font-weight: 700; margin-bottom: 4px; }
+.chart-sub { font-size: 0.76rem; color: var(--fg-muted); margin-bottom: 18px; }
+.chart-note { font-size: 0.82rem; color: var(--fg-secondary); margin-top: 14px; line-height: 1.65; }
+
+/* Horizontal bars */
+.bar-chart { display: flex; flex-direction: column; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) 72px; align-items: center; gap: 12px; }
+.bar-label { font-size: 0.78rem; font-weight: 500; color: var(--fg-secondary); text-align: right; line-height: 1.3; }
+.bar-track { height: 24px; background: var(--surface); }
+.bar-fill { height: 100%; background: var(--series-muted); border-radius: 0 4px 4px 0; min-width: 3px; }
+.bar-fill.hi { background: var(--series-1); }
+.bar-val { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--chart-text); white-space: nowrap; }
+
+/* Vertical bars */
+.vbar-legend { display: flex; gap: 16px; font-size: 0.75rem; color: var(--fg-secondary); margin-bottom: 12px; }
+.vbar-legend span { display: flex; align-items: center; gap: 6px; }
+.vbar-legend i { width: 12px; height: 12px; display: inline-block; }
+.lg-actual { background: var(--series-1); }
+.lg-proj { background: var(--series-proj); }
+.vbar-wrap { display: flex; gap: 8px; padding-top: 28px; }
+.vbar-axis { position: relative; width: 44px; height: 240px; flex-shrink: 0; }
+.vbar-axis span { position: absolute; right: 0; transform: translateY(50%); font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; color: var(--chart-text-secondary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vbar-plot {
+  position: relative; flex: 1; min-width: 0; height: 240px;
+  display: flex; align-items: flex-end; gap: 2px;
+  border-bottom: 1px solid var(--chart-text-secondary);
+  background-image: linear-gradient(to top, var(--chart-grid) 1px, transparent 1px);
+  background-size: 100% 25%; margin-bottom: 26px;
+}
+.vbar-col { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; }
+.vbar { width: 100%; max-width: 44px; margin: 0 auto; background: var(--series-proj); border-radius: 4px 4px 0 0; transition: filter 0.15s; }
+.vbar-col.actual .vbar { background: var(--series-1); }
+.vbar-col:hover .vbar, .vbar-col:focus .vbar { filter: brightness(1.15); }
+.vbar-col:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.vbar-val { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--chart-text); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vbar-year { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 6px; font-size: 0.68rem; color: var(--chart-text-secondary); font-variant-numeric: tabular-nums; }
+.vbar-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--fg); color: var(--bg); font-size: 0.75rem; padding: 6px 10px; white-space: nowrap; transform: translate(-50%, -100%); margin-top: -8px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Table */
+.table-scroll { overflow-x: auto; }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 560px; }
+.compare-table th { background: var(--surface); padding: 10px 14px; font-weight: 700; text-align: left; border-bottom: 2px solid var(--accent); font-size: 0.78rem; white-space: nowrap; }
+.compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.compare-table td:first-child { font-weight: 700; white-space: nowrap; }
+.compare-table tr:hover td { background: var(--tag-bg); }
+
+/* KPI trio (reusable) */
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2px; }
+.kpis { display: flex; flex-direction: column; gap: 2px; }
+.kpi { background: var(--surface); padding: 12px 14px; }
+.kpi b { display: block; font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif; font-size: 1.3rem; font-variant-numeric: tabular-nums; line-height: 1.25; }
+.kpi span { font-size: 0.8rem; color: var(--fg-secondary); }
+.kpi small { display: block; font-size: 0.68rem; color: var(--fg-muted); margin-top: 2px; }
+
+/* Drivers */
+.drv-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2px; margin-bottom: 24px; }
+.drv-chip { display: flex; flex-direction: column; gap: 6px; padding: 16px; color: #fff; text-decoration: none; min-width: 0; }
+.drv-chip .n { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; opacity: 0.85; }
+.drv-chip .t { font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
+.drv-chip:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+.bg-blue { background: var(--tile-blue); } .bg-orange { background: var(--tile-orange); }
+.bg-green { background: var(--tile-green); } .bg-purple { background: var(--tile-purple); }
+.bg-red { background: var(--tile-red); } .bg-navy { background: var(--tile-navy); }
+.drv { border: 1px solid var(--border); background: var(--card-bg); margin-bottom: 2px; }
+.drv-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 16px 22px; color: #fff; }
+.drv-head h3 { font-size: 1.1rem; font-weight: 700; flex: 1; min-width: 180px; }
+.drv-head .num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.6rem; line-height: 1; opacity: 0.9; }
+.light { display: inline-flex; align-items: center; gap: 6px; font-size: 0.76rem; font-weight: 700; background: rgba(0,0,0,0.25); padding: 4px 10px; align-self: flex-start; }
+.light::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--l); box-shadow: 0 0 0 2px rgba(255,255,255,0.6); }
+.l-green { --l: #4cdfaa; } .l-yellow { --l: #ffd166; } .l-red { --l: #ff6b81; }
+.drv-body { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; padding: 22px; }
+.drv-body p { font-size: 0.88rem; color: var(--fg-secondary); line-height: 1.7; }
+.drv-body h4 { font-size: 0.74rem; letter-spacing: 0.06em; color: var(--fg-muted); font-weight: 700; margin: 14px 0 4px; }
+.drv-body h4:first-child { margin-top: 0; }
+.drv-def { font-size: 0.95rem !important; color: var(--fg) !important; font-weight: 500; }
+.risk { margin-top: 14px; padding: 10px 14px; background: var(--tag-bg); font-size: 0.84rem; color: var(--fg-secondary); }
+.risk strong { color: var(--fg); }
+.watch { margin-top: 8px; padding: 10px 14px; border-left: 3px solid var(--accent); font-size: 0.84rem; color: var(--fg-secondary); }
+.watch strong { color: var(--fg); }
+
+/* Implications */
+.impl { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; }
+.impl-col { background: var(--card-bg); border: 1px solid var(--border); min-width: 0; }
+.impl-col header { padding: 16px 20px; color: #fff; }
+.impl-col header h3 { font-size: 1.1rem; font-weight: 700; }
+.impl-col header p { font-size: 0.8rem; opacity: 0.85; }
+.impl-col ul { list-style: none; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.impl-col li { font-size: 0.86rem; color: var(--fg-secondary); line-height: 1.65; padding-left: 14px; position: relative; }
+.impl-col li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 6px; height: 6px; background: var(--accent); }
+.impl-col li strong { color: var(--fg); display: block; }
+.disclaimer { font-size: 0.75rem; color: var(--fg-muted); margin-top: 12px; }
+
+/* Verdict */
+.verdict {
+  background: var(--tile-navy); color: #fff; margin-block: 40px;
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-block: 48px;
+  padding-left: max(32px, env(safe-area-inset-left, 0px));
+  padding-right: max(32px, env(safe-area-inset-right, 0px));
+}
+.verdict-inner { max-width: 1100px; margin: 0 auto; }
+.verdict h2 { font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 14px; text-wrap: balance; }
+.verdict-lead { color: rgba(255,255,255,0.8); max-width: 760px; font-size: 0.95rem; }
+.verdict-lead strong { color: #4cdfaa; }
+.verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 24px; }
+.verdict-card { padding: 22px; background: rgba(255,255,255,0.07); }
+.verdict-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.verdict-card dl { display: flex; flex-direction: column; gap: 8px; }
+.verdict-card dt { font-size: 0.86rem; font-weight: 700; color: #fff; }
+.verdict-card dd { font-size: 0.82rem; color: rgba(255,255,255,0.72); line-height: 1.6; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.v-yes { background: #4cdfaa; } .v-maybe { background: #ffd166; } .v-no { background: #ff6b81; }
+
+/* Glossary */
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2px; }
+.gl-item { padding: 16px 20px; background: var(--card-bg); border: 1px solid var(--border); }
+.gl-item dt { font-weight: 700; font-size: 0.9rem; color: var(--tag-fg); margin-bottom: 4px; }
+.gl-item dd { font-size: 0.82rem; color: var(--fg-secondary); line-height: 1.6; }
+
+.footer { padding: 28px 0 36px; font-size: 0.75rem; color: var(--fg-muted); border-top: 1px solid var(--border); margin-top: 32px; line-height: 1.7; }
+
+@media (max-width: 700px) {
+  .drv-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero { padding-block: 40px 36px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .stat-value { font-size: 1.7rem; }
+  .metro-grid { grid-template-columns: 1fr; }
+  .nav-bar a { font-size: 0.8rem; padding: 10px 12px; }
+  .bar-row { grid-template-columns: 70px minmax(0, 1fr) 62px; gap: 8px; }
+  .bar-label { font-size: 0.7rem; }
+  .takeaway { grid-template-columns: 1fr; gap: 10px; }
+  .takeaway .lbl { justify-self: start; }
+  .vbar-year { font-size: 0.6rem; }
+  .vbar-col:nth-child(even) .vbar-year { display: none; }
+  .verdict { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+}
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-stars" id="stars"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">우주산업 백과사전 · 2026년 10월 기준</div>
+    <h1>우주산업, 앞으로 <em>10년</em> 안에<br>본격적으로 개화할까?</h1>
+    <p class="hero-sub">발사비용은 떨어지고, 위성은 공장에서 대량으로 찍어내고, 휴대폰이 위성에 직접 연결되기 시작했습니다. 시장 규모, 핵심 Driver, 산업별 시사점을 데이터 중심으로 정리했습니다.</p>
+  </div>
+</div>
+
+<nav class="nav-bar" aria-label="목차">
+  <a href="#overview">요약</a>
+  <a href="#rockets">발사체</a>
+  <a href="#economy">시장 규모</a>
+  <a href="#explore">탐사 로드맵</a>
+  <a href="#drivers">개화 Driver</a>
+  <a href="#tech">핵심 기술</a>
+  <a href="#implications">산업별 시사점</a>
+  <a href="#verdict">결론</a>
+  <a href="#glossary">용어</a>
+</nav>
+
+<div class="wrapper">
+
+<!-- SUMMARY -->
+<div id="overview">
+  <div class="stat-row">
+    <div class="stat-tile">
+      <div class="stat-value">$6,300억</div>
+      <div class="stat-label">전 세계 우주경제 규모</div>
+      <div class="stat-src">2025 · WEF, McKinsey</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-value">$1.8조</div>
+      <div class="stat-label">2035년 전망, 10년간 약 2.9배</div>
+      <div class="stat-src">연평균 약 11% 성장</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-value">1/20</div>
+      <div class="stat-label">우주왕복선 대비 팰컨 9의 kg당 발사비</div>
+      <div class="stat-src">$54,500 → $2,700</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-value">16,900기</div>
+      <div class="stat-label">작동 중인 위성 수, 2020년의 약 5배</div>
+      <div class="stat-src">2026.9 · J. McDowell 집계</div>
+    </div>
+  </div>
+  <div class="takeaway">
+    <span class="lbl">한 줄 결론</span>
+    <p>우주산업은 이미 개화를 시작했습니다. 발사비 하락과 위성 대량생산이 공급 측 병목을 풀었고, 위성 인터넷과 휴대폰 직접 연결이 대중 수요를 만들고 있습니다. 다만 분야별 속도 차이가 큽니다. 통신·관측은 10년 안에 성숙하고, 관광·우주정거장은 초기 상용화, 화성·자원 채굴은 2030년대 후반 이후로 봅니다.</p>
+  </div>
+</div>
+
+<!-- 01 발사체 -->
+<section class="section" id="rockets">
+  <div class="section-header">
+    <div class="section-icon blue">01</div>
+    <h2 class="section-title">발사체: 우주산업의 물류비</h2>
+  </div>
+  <p class="section-desc">우주에서 하는 모든 사업은 발사에서 시작합니다. 자동차 산업에서 물류비가 원가를 좌우하듯, 우주산업에서는 kg당 발사비가 사업성을 결정합니다. 지난 10년간 이 비용이 크게 떨어진 것이 오늘의 우주 붐을 만든 가장 큰 원인입니다.</p>
+
+  <div class="metro-grid">
+    <div class="metro-card c-blue">
+      <div class="card-tag">미국 · SpaceX</div>
+      <h3>팰컨 9: 재사용을 표준으로 만든 로켓</h3>
+      <p>1단 부스터를 착륙시켜 20회 이상 재사용합니다. 2025년 SpaceX는 한 해 170회 발사로 역대 최고 기록을 세웠고, 2026년에도 상반기에 이미 기록을 갈아치웠습니다. 사실상 전 세계 상업 발사 시장을 주도하고 있습니다.</p>
+    </div>
+    <div class="metro-card c-blue">
+      <div class="card-tag">미국 · SpaceX</div>
+      <h3>스타십: 1회 150톤, 완전 재사용 목표</h3>
+      <p>높이 약 120m로 역사상 가장 큰 로켓입니다. 1단(슈퍼헤비)과 2단(스타십)을 모두 재사용해 kg당 비용을 100~200달러까지 낮추는 것이 목표입니다. 1단 부스터를 발사대에서 공중 포획하는 데 성공했지만, 정기 화물 운송은 아직 시작 전입니다.</p>
+    </div>
+    <div class="metro-card c-teal">
+      <div class="card-tag">미국 · Blue Origin</div>
+      <h3>뉴 글렌: SpaceX의 첫 대형 경쟁자</h3>
+      <p>아마존 창업자 제프 베이조스의 회사가 개발했습니다. 2025년 1월 첫 비행, 같은 해 11월 1단 착륙에 성공했습니다. 재사용 대형 로켓 시장에서 공급자가 2곳이 됐다는 점이 의미가 큽니다.</p>
+    </div>
+    <div class="metro-card c-orange">
+      <div class="card-tag">미국 · 소형·중형</div>
+      <h3>로켓랩과 3D 프린팅 로켓</h3>
+      <p>로켓랩은 소형 로켓 '일렉트론'으로 2025년 21회 발사했고, 재사용 중형 로켓 '뉴트론'은 2026년 말 첫 발사를 목표로 합니다. 렐러티비티 스페이스는 3D 프린팅으로 부품 수를 크게 줄이는 방식을 시도하고 있지만 자금 사정이 불안하다는 보도가 있습니다.</p>
+    </div>
+    <div class="metro-card c-red">
+      <div class="card-tag">중국 · 민간</div>
+      <h3>빠르게 추격하는 중국 민간 기업</h3>
+      <p>중국은 2026년 140회 이상 발사를 목표로 합니다. 랜드스페이스(기업가치 약 110억 달러, 상장 준비)와 아이스페이스 등이 메탄 엔진과 재사용 로켓을 개발하며 SpaceX 모델을 따라가고 있습니다.</p>
+    </div>
+    <div class="metro-card c-green">
+      <div class="card-tag">한국</div>
+      <h3>누리호와 차세대 발사체</h3>
+      <p>순수 국내 기술로 개발한 발사체로, 한국은 세계 7번째 자력 발사국이 됐습니다. 2026년 10월 5차 발사에서 위성 15기를 한 번에 궤도에 올렸습니다. 2029년 달 궤도선 발사, 2032년 차세대 발사체(KSLV-III)로 달 착륙선 발사를 계획하고 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <h4>1kg을 지구 저궤도에 보내는 비용</h4>
+    <div class="chart-sub">단위: 미국 달러 · 업계 추정치, 스타십은 목표치</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">우주왕복선<br>1981~2011</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="bar-val">$54,500</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">아리안 5<br>2000년대</span>
+        <div class="bar-track"><div class="bar-fill" style="width:18.3%"></div></div>
+        <span class="bar-val">약 $10,000</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">팰컨 9<br>2025</span>
+        <div class="bar-track"><div class="bar-fill hi" style="width:5%"></div></div>
+        <span class="bar-val">$2,700</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">스타십<br>목표</span>
+        <div class="bar-track"><div class="bar-fill hi" style="width:0.4%"></div></div>
+        <span class="bar-val">$100~200</span>
+      </div>
+    </div>
+    <p class="chart-note">케임브리지대 연구에 따르면 업계 누적 발사량이 2배가 될 때마다 kg당 비용은 약 21%씩 떨어져 왔습니다. 제조업의 학습곡선과 같은 원리입니다.</p>
+  </div>
+</section>
+
+<!-- 02 시장 -->
+<section class="section" id="economy">
+  <div class="section-header">
+    <div class="section-icon orange">02</div>
+    <h2 class="section-title">시장 규모: 어디서 돈이 벌리는가</h2>
+  </div>
+  <p class="section-desc">우주산업 매출의 대부분은 로켓이 아니라 위성을 이용한 서비스에서 나옵니다. 통신, 위치정보, 지구관측처럼 이미 일상에 들어온 분야가 시장을 떠받치고 있고, 관광·제조·자원은 이제 막 시작하는 단계입니다.</p>
+
+  <div class="chart-wrap">
+    <h4>전 세계 우주경제 규모, 2025 → 2035</h4>
+    <div class="chart-sub">단위: 조 달러 · 2025년 실적, 2026~2035년은 연평균 약 11% 성장 가정 전망 · 출처: WEF, McKinsey</div>
+    <div class="vbar-legend"><span><i class="lg-actual"></i>실적</span><span><i class="lg-proj"></i>전망</span></div>
+    <div class="vbar-wrap">
+      <div class="vbar-axis">
+        <span style="bottom:100%">$2.0조</span><span style="bottom:75%">$1.5조</span><span style="bottom:50%">$1.0조</span><span style="bottom:25%">$0.5조</span><span style="bottom:0">$0</span>
+      </div>
+      <div class="vbar-plot" id="vbarPlot" role="img" aria-label="2025년 0.63조 달러에서 2035년 1.8조 달러로 성장하는 연도별 막대그래프">
+        <div class="vbar-tip" id="vbarTip" hidden></div>
+      </div>
+    </div>
+    <table class="sr-only">
+      <caption>연도별 우주경제 규모(조 달러)</caption>
+      <tr><th>2025</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2032</th><th>2033</th><th>2034</th><th>2035</th></tr>
+      <tr><td>0.63</td><td>0.70</td><td>0.78</td><td>0.86</td><td>0.96</td><td>1.06</td><td>1.18</td><td>1.31</td><td>1.46</td><td>1.62</td><td>1.80</td></tr>
+    </table>
+    <p class="chart-note">보수적 전망도 있습니다. 노바스페이스는 2034년 약 1조 달러로 봅니다. 어느 쪽이든 10년 안에 지금의 2~3배가 된다는 데는 대부분의 기관이 동의합니다.</p>
+  </div>
+
+  <div class="metro-grid">
+    <div class="metro-card c-blue">
+      <div class="card-tag">위성 통신</div>
+      <h3>스타링크: 가입자 1,000만 명 이상</h3>
+      <p>저궤도 위성 1만 기 이상으로 전 세계에 인터넷을 제공합니다. 위성 인터넷 시장의 약 97%를 차지합니다. 원웹(유텔샛)과 아마존 카이퍼가 뒤를 쫓고 있지만, 카이퍼는 본격 서비스 전입니다.</p>
+    </div>
+    <div class="metro-card c-red">
+      <div class="card-tag">위치·통신 인프라</div>
+      <h3>GPS와 통신 위성</h3>
+      <p>내비게이션, 물류 추적, 항공·해운 통신, 금융 거래 시각 동기화까지 위성에 의존합니다. 자율주행과 드론 배송이 늘수록 정밀 위치정보 수요도 커집니다.</p>
+    </div>
+    <div class="metro-card c-green">
+      <div class="card-tag">지구관측</div>
+      <h3>위성 데이터 + AI</h3>
+      <p>농작물 작황, 공장 가동률, 항만 물동량, 산불·홍수 감시에 위성 영상이 쓰입니다. AI 기반 지구관측 시장은 2025년 32.5억 달러에서 2034년 98.4억 달러로 커질 전망입니다.</p>
+    </div>
+    <div class="metro-card c-orange">
+      <div class="card-tag">우주관광</div>
+      <h3>아직은 초고가 시장</h3>
+      <p>준궤도 관광은 블루 오리진(추정 수억 원대)과 버진 갤럭틱(약 75만 달러)이 운영합니다. 국제우주정거장 방문은 1인당 5,500만~7,000만 달러입니다. 블루 오리진은 2026년 1월부터 관광 비행을 잠시 멈추고 달 착륙선에 집중하고 있습니다.</p>
+    </div>
+    <div class="metro-card c-teal">
+      <div class="card-tag">우주 제조</div>
+      <h3>무중력에서만 가능한 공정</h3>
+      <p>무중력에서는 신호 손실이 훨씬 적은 광섬유(ZBLAN), 결정 구조가 균일한 의약품을 만들 수 있습니다. 바르다 스페이스는 우주에서 만든 약물을 지구로 회수하는 데 성공했습니다. 시장은 2026년 약 14억 달러 규모입니다.</p>
+    </div>
+    <div class="metro-card c-purple">
+      <div class="card-tag">우주 자원</div>
+      <h3>달의 물과 소행성 금속</h3>
+      <p>달 극지방의 얼음은 로켓 연료로 바꿀 수 있어 달 기지의 핵심 자원입니다. 소행성에는 백금족 금속이 풍부합니다. 다만 실제로 채굴해 가져온 사례는 아직 없고, 소유권을 정하는 국제 규칙도 정비 중입니다.</p>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <h4>주요국 우주 전략</h4>
+    <div class="chart-sub">전 세계 정부 우주예산 합계 $1,374억, 그중 54%가 국방 (2025, Novaspace)</div>
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead><tr><th>국가</th><th>주요 계획</th><th>특징</th></tr></thead>
+        <tbody>
+          <tr><td>미국</td><td>아르테미스 달 착륙, 미사일 방어망 '골든 돔'</td><td>세계 최대 예산. NASA가 민간에서 서비스를 사는 구조로 전환 중</td></tr>
+          <tr><td>중국</td><td>독자 우주정거장 톈궁, 2030년 유인 달 착륙</td><td>러시아와 달 남극 기지(ILRS) 추진, 민간 발사 기업 급성장</td></tr>
+          <tr><td>유럽</td><td>아리안 6, 독자 위성망 IRIS²(€156억)</td><td>통신 주권 확보에 집중</td></tr>
+          <tr><td>인도</td><td>가간얀 유인 비행, 찬드라얀-4 샘플 회수</td><td>저비용 고효율, 2023년 달 남극 인근 착륙</td></tr>
+          <tr><td>일본</td><td>MMX 화성 위성 샘플 회수, H3 로켓</td><td>2024년 SLIM 정밀 달 착륙</td></tr>
+          <tr><td>한국</td><td>차세대 발사체, 2032년 달 착륙선</td><td>우주항공청 예산 1조 1,131억 원(2026), 처음 1조 원 돌파</td></tr>
+          <tr><td>UAE</td><td>화성 탐사선 아말, 소행성 탐사</td><td>중동 우주 허브 전략</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 03 탐사 -->
+<section class="section" id="explore">
+  <div class="section-header">
+    <div class="section-icon green">03</div>
+    <h2 class="section-title">탐사 로드맵: 달 경제권이 열린다</h2>
+  </div>
+  <p class="section-desc">이번 달 탐사는 1960년대처럼 다녀오는 데서 끝나지 않습니다. 달에 기지와 정거장을 짓고, 민간 기업이 운송과 착륙을 맡는 구조입니다. 정부가 첫 고객이 되어 민간 시장을 키우는 방식입니다.</p>
+
+  <div class="tl-legend">
+    <span><i style="background:var(--tile-green)"></i>완료</span>
+    <span><i style="background:var(--tile-orange)"></i>진행·임박</span>
+    <span><i style="background:var(--tile-purple)"></i>계획</span>
+  </div>
+  <div class="timeline">
+    <div class="tl-item done">
+      <div class="tl-year">2022</div>
+      <div class="tl-title">제임스 웹 우주망원경 가동, 아르테미스 I 무인 비행</div>
+      <div class="tl-desc">약 135억 년 전 초기 은하를 관측하기 시작했습니다. NASA는 무인 오리온 우주선을 달 궤도에 보냈다가 회수했습니다.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-year">2023</div>
+      <div class="tl-title">인도 찬드라얀-3 달 남극 인근 착륙, 한국 다누리 임무 수행</div>
+      <div class="tl-desc">인도는 달 남극 인근에 착륙했습니다. 한국 다누리는 달 궤도에서 관측을 계속하고 있습니다.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-year">2024 – 2025</div>
+      <div class="tl-title">일본 SLIM 정밀 착륙, 뉴 글렌 첫 비행</div>
+      <div class="tl-desc">SLIM은 목표 지점 100m 이내 착륙에 성공했습니다. 블루 오리진 뉴 글렌은 2025년 첫 비행과 1단 착륙에 성공했습니다.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-year">2026.04</div>
+      <div class="tl-title">아르테미스 II 유인 달 궤도 비행 성공</div>
+      <div class="tl-desc">우주비행사 4명이 달을 돌아 귀환했습니다. 반세기 만의 유인 달 비행입니다.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-year">2026.10</div>
+      <div class="tl-title">누리호 5차 발사, 위성 15기 동시 투입</div>
+      <div class="tl-desc">초소형 군집위성 5기를 포함해 15기를 궤도에 올렸습니다. 일본은 화성 위성 샘플 회수 임무 MMX를 발사할 예정입니다.</div>
+    </div>
+    <div class="tl-item progress">
+      <div class="tl-year">2027 – 2028</div>
+      <div class="tl-title">아르테미스 III 궤도 도킹 시험, 아르테미스 IV 달 착륙</div>
+      <div class="tl-desc">III는 2027년 말 지구 궤도에서 착륙선 도킹을 시험하는 임무로 바뀌었고, 실제 착륙은 2028년 IV가 맡습니다. 착륙선은 SpaceX 스타십입니다. 민간 정거장 액시엄·헤이븐-1도 이 시기 첫 모듈 발사를 목표로 합니다.</div>
+    </div>
+    <div class="tl-item future">
+      <div class="tl-year">2029 – 2030</div>
+      <div class="tl-title">중국 유인 달 착륙, 국제우주정거장 퇴역</div>
+      <div class="tl-desc">중국은 2030년 유인 달 착륙을 목표로 합니다. 국제우주정거장은 2030년 퇴역하고 민간 정거장이 그 역할을 넘겨받습니다. 한국은 2029년 누리호로 달 궤도선을 보낼 계획입니다.</div>
+    </div>
+    <div class="tl-item future">
+      <div class="tl-year">2030년대</div>
+      <div class="tl-title">달 기지 건설, 화성 유인 탐사 도전</div>
+      <div class="tl-desc">미국과 중국이 각각 달 남극 기지를 추진합니다. SpaceX는 화성 유인 비행을 빠르면 2029년, 현실적으로는 2031년 이후로 제시하고 있습니다. 한국은 2032년 달 착륙선을 발사할 계획입니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 개화 Driver -->
+<section class="section" id="drivers">
+  <div class="section-header">
+    <div class="section-icon red">04</div>
+    <h2 class="section-title">개화 Driver: 우주산업을 움직이는 6가지 힘</h2>
+  </div>
+  <p class="section-desc">산업이 개화하려면 공급(더 싸게 만들기), 수요(쓰는 사람 늘리기), 환경(자본과 제도)이 함께 움직여야 합니다. 이 세 축에서 6가지 Driver를 도출했습니다. 신호등은 각 Driver가 10년 안에 산업을 끌어올릴 만큼 충분히 강해질지에 대한 판단입니다.</p>
+
+  <div class="drv-summary">
+    <a class="drv-chip bg-blue" href="#d1"><span class="n">공급 · 01</span><span class="t">발사비용 하락</span><span class="light l-green">초록</span></a>
+    <a class="drv-chip bg-orange" href="#d2"><span class="n">공급 · 02</span><span class="t">위성 소형화·대량생산</span><span class="light l-green">초록</span></a>
+    <a class="drv-chip bg-green" href="#d3"><span class="n">수요 · 03</span><span class="t">새로운 수요 확대</span><span class="light l-green">초록</span></a>
+    <a class="drv-chip bg-purple" href="#d4"><span class="n">수요 · 04</span><span class="t">정부·국방 수요</span><span class="light l-yellow">노랑</span></a>
+    <a class="drv-chip bg-red" href="#d5"><span class="n">환경 · 05</span><span class="t">민간 자본 유입</span><span class="light l-green">초록</span></a>
+    <a class="drv-chip bg-navy" href="#d6"><span class="n">환경 · 06</span><span class="t">규칙과 인프라</span><span class="light l-yellow">노랑</span></a>
+  </div>
+
+  <article class="drv" id="d1">
+    <div class="drv-head bg-blue"><span class="num">01</span><h3>발사비용 하락</h3><span class="light l-green">10년 전망 초록</span></div>
+    <div class="drv-body">
+      <div>
+        <h4>정의</h4>
+        <p class="drv-def">로켓 재사용과 발사 빈도 증가로 kg당 발사비가 구조적으로 떨어지는 흐름입니다.</p>
+        <h4>왜 중요한가</h4>
+        <p>발사비는 모든 우주 사업의 원가 바닥입니다. 이 비용이 떨어져야 위성 통신, 관측, 제조, 관광의 사업성이 생깁니다. 우주산업 전체를 여는 첫 번째 열쇠입니다.</p>
+        <h4>2026년 현황</h4>
+        <p>팰컨 9 재사용은 일상이 됐고, 스타십은 시험 비행 단계입니다. 블루 오리진 뉴 글렌이 1단 착륙에 성공했고, 로켓랩 뉴트론이 2026년 말 첫 발사를 앞두고 있어 공급자 경쟁이 시작됐습니다.</p>
+        <div class="risk"><strong>걸림돌:</strong> kg당 100달러대는 스타십 완전 재사용이 증명돼야 가능합니다. 시장이 SpaceX 한 회사에 크게 의존하는 점도 리스크입니다.</div>
+        <div class="watch"><strong>체크 지표:</strong> 스타십 정기 화물 운송 시작 시점, 연간 발사 횟수, 경쟁사의 재사용 성공 여부</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>$2,700/kg</b><span>팰컨 9 kg당 비용, 우주왕복선의 약 1/20</span><small>2025 · 업계 추정</small></div>
+        <div class="kpi"><b>170회</b><span>SpaceX 연간 발사 횟수, 역대 최고</span><small>2025 · SpaceX 집계 보도</small></div>
+        <div class="kpi"><b>100회 돌파</b><span>SpaceX 2026년 발사 누적, 4월에 이미 50회</span><small>2026 · Advanced Television</small></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="drv" id="d2">
+    <div class="drv-head bg-orange"><span class="num">02</span><h3>위성 소형화·대량생산</h3><span class="light l-green">10년 전망 초록</span></div>
+    <div class="drv-body">
+      <div>
+        <h4>정의</h4>
+        <p class="drv-def">위성을 작고 표준화된 제품으로 만들어 자동차처럼 생산라인에서 양산하는 흐름입니다.</p>
+        <h4>왜 중요한가</h4>
+        <p>과거 위성은 버스 크기에 1기당 수천억 원이 드는 주문 제작품이었습니다. 이제는 작은 위성 수천 기가 네트워크를 이뤄 서비스합니다. 진입 비용이 낮아져 중소기업과 중견국도 사업에 참여할 수 있게 됐습니다.</p>
+        <h4>2026년 현황</h4>
+        <p>스타링크는 2026년 3월 작동 위성 1만 기를 넘었고, 전 세계 작동 위성의 약 3분의 2를 차지합니다. 아마존 카이퍼도 수백 기를 올렸지만 본격 서비스 전입니다.</p>
+        <div class="risk"><strong>걸림돌:</strong> 위성이 늘수록 우주 쓰레기와 충돌 위험이 커지고, 주파수와 궤도를 둘러싼 경쟁과 규제가 강화됩니다.</div>
+        <div class="watch"><strong>체크 지표:</strong> 위성 1기당 제조 단가, 주간 생산량, 카이퍼 등 후발 주자의 서비스 개시</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>3,300 → 16,900기</b><span>작동 중인 위성 수, 6년 만에 약 5배</span><small>2020 → 2026.9 · UCS, J. McDowell 집계</small></div>
+        <div class="kpi"><b>주당 약 70기</b><span>스타링크 생산 속도, 1기 약 40만 달러 추정</span><small>2025~2026 · 업계 분석, 출처별 차이 있음</small></div>
+        <div class="kpi"><b>$218억 → $867억</b><span>위성 제조 시장 전망, 연 14.8% 성장</span><small>2025 → 2035 · New Space Economy</small></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="drv" id="d3">
+    <div class="drv-head bg-green"><span class="num">03</span><h3>새로운 수요 확대</h3><span class="light l-green">10년 전망 초록</span></div>
+    <div class="drv-body">
+      <div>
+        <h4>정의</h4>
+        <p class="drv-def">우주가 정부와 연구기관의 영역에서 일반 소비자와 기업이 매일 쓰는 서비스로 바뀌는 흐름입니다.</p>
+        <h4>왜 중요한가</h4>
+        <p>일반 스마트폰이 위성에 직접 연결되면(D2C, Direct-to-Cell) 잠재 고객이 수십억 명으로 늘어납니다. 고객 기반이 커지면 위성 사업자의 현금흐름이 생기고 재투자가 이어집니다. 위성 영상에 AI 분석을 결합한 데이터 사업도 농업, 보험, 물류로 확산 중입니다.</p>
+        <h4>2026년 현황</h4>
+        <p>T-모바일과 스타링크의 'T-Satellite'가 2025년 7월 상용화됐습니다. 현재는 문자와 사진 전송이 가능하고, 음성과 데이터는 2026~2027년 추가될 예정입니다. AST 스페이스모바일은 미국 상용 서비스 허가를 받았고 AT&amp;T, 버라이즌, 보다폰이 파트너로 참여합니다.</p>
+        <div class="risk"><strong>걸림돌:</strong> D2C 트래픽은 아직 통신사 전체 사용량에 비해 매우 작습니다. 유료 상품으로 자리 잡기까지 시간이 걸리고, 주파수 사용권을 둘러싼 통신사와 위성사업자 간 갈등도 있습니다.</div>
+        <div class="watch"><strong>체크 지표:</strong> 위성 인터넷 가입자 수, D2C 음성·데이터 서비스 개시, 통신사 제휴 확대</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>1,000만 명+</b><span>스타링크 가입자 수</span><small>2026.3 · SpaceX 임원 발언 보도</small></div>
+        <div class="kpi"><b>약 45기</b><span>AST가 2026년 내 배치 목표인 휴대폰 직접 연결 위성</span><small>2026 · AST 1분기 실적 발표</small></div>
+        <div class="kpi"><b>$32.5억 → $98.4억</b><span>AI 지구관측 시장 전망, 연 14.7% 성장</span><small>2025 → 2034 · Intel Market Research</small></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="drv" id="d4">
+    <div class="drv-head bg-purple"><span class="num">04</span><h3>정부·국방 수요</h3><span class="light l-yellow">10년 전망 노랑</span></div>
+    <div class="drv-body">
+      <div>
+        <h4>정의</h4>
+        <p class="drv-def">안보와 탐사를 위해 정부가 우주기업의 가장 크고 안정적인 고객 역할을 하는 흐름입니다.</p>
+        <h4>왜 중요한가</h4>
+        <p>정부 계약은 규모가 크고 기간이 길어 기업이 기술을 키울 시간을 벌어 줍니다. NASA가 SpaceX와 블루 오리진에 달 착륙선 개발을 맡긴 것처럼, 정부 조달이 민간 시장의 씨앗 역할을 합니다.</p>
+        <h4>2026년 현황</h4>
+        <p>미국은 미사일 방어망 '골든 돔'에 약 250억 달러를 배정했지만 의회가 세부 사용처 공개를 요구하고 있습니다. 유럽은 2026년 8월 IRIS² 구축 계약을 체결했습니다. 한국 우주항공청 예산은 1조 1,131억 원으로 처음 1조 원을 넘었습니다.</p>
+        <div class="risk"><strong>걸림돌:</strong> 국방 수요는 커지지만 전체 정부 우주예산은 2030년까지 연 1% 안팎 증가에 그칠 전망입니다. 예산이 정치 일정에 따라 삭감되거나 지연될 수 있고, IRIS²처럼 사업비가 늘어나는 경우도 있습니다.</div>
+        <div class="watch"><strong>체크 지표:</strong> 미국 우주군·NASA 예산 확정, 골든 돔 계약 발주, 한국 우주항공청 예산 증가율</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>$1,374억</b><span>전 세계 정부 우주예산, 역대 최고 (54%가 국방)</span><small>2025 · Novaspace</small></div>
+        <div class="kpi"><b>약 $399억</b><span>미국 우주군 예산 요청, 골든 돔 포함</span><small>FY2026 · 미 공군협회, Aerospace CSPS</small></div>
+        <div class="kpi"><b>€156억</b><span>유럽 IRIS² 위성망 사업비, 위성 348기</span><small>2026 · ESA, Atlas Institute</small></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="drv" id="d5">
+    <div class="drv-head bg-red"><span class="num">05</span><h3>민간 자본 유입</h3><span class="light l-green">10년 전망 초록</span></div>
+    <div class="drv-body">
+      <div>
+        <h4>정의</h4>
+        <p class="drv-def">벤처캐피털, 사모펀드, 공개시장 투자자가 우주기업에 자금을 공급하는 흐름입니다.</p>
+        <h4>왜 중요한가</h4>
+        <p>과거 우주개발비는 대부분 정부가 부담했습니다. 민간 자본이 들어오면서 개발 속도가 빨라지고 경쟁이 생겼습니다. 꾸준한 자금 공급이 있어야 신규 기업이 계속 등장합니다.</p>
+        <h4>2026년 현황</h4>
+        <p>우주 스타트업 투자는 2021년 정점 이후 2023년 위축됐다가 2025년 회복했습니다. SpaceX가 2026년 상장을 추진한다는 보도만으로 국내 우주 관련주가 동반 상승할 만큼 시장의 관심이 큽니다. 한국 정부는 뉴스페이스 투자 펀드를 약 2,000억 원으로 확대했습니다.</p>
+        <div class="risk"><strong>걸림돌:</strong> 자금이 대형사에 쏠리면 중소 기업의 자금 조달이 어려워집니다. 발사 실패 같은 사건 하나로 투자 심리가 크게 흔들릴 수 있습니다. 이노스페이스의 2025년 12월 첫 상업 발사 실패가 그런 예입니다.</div>
+        <div class="watch"><strong>체크 지표:</strong> SpaceX 상장 여부와 기업가치, 연간 우주 스타트업 투자액, 국내 우주기업 상장 동향</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>$109억 · 235건</b><span>전 세계 우주 스타트업 투자</span><small>2025 · BryceTech</small></div>
+        <div class="kpi"><b>$1.5~2조+</b><span>SpaceX 상장 목표 기업가치 (보도 기준)</span><small>2025.12~2026.4 · Bloomberg, TechCrunch</small></div>
+        <div class="kpi"><b>약 2,000억 원</b><span>한국 뉴스페이스 투자 펀드 규모</span><small>2026 · 우주항공청</small></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="drv" id="d6">
+    <div class="drv-head bg-navy"><span class="num">06</span><h3>규칙과 인프라</h3><span class="light l-yellow">10년 전망 노랑</span></div>
+    <div class="drv-body">
+      <div>
+        <h4>정의</h4>
+        <p class="drv-def">궤도 교통 규칙, 자원 소유권 같은 제도와 발사장 같은 물리적 기반 시설입니다.</p>
+        <h4>왜 중요한가</h4>
+        <p>위성이 수만 기로 늘면 충돌을 막는 교통 규칙이 필수입니다. "달에서 채굴한 자원은 누구 것인가" 같은 규칙이 정해져야 기업이 장기 투자를 결정할 수 있습니다. 발사장이 부족하면 로켓이 있어도 쏠 수 없습니다.</p>
+        <h4>2026년 현황</h4>
+        <p>달 탐사 국제 협약인 아르테미스 협정에 2026년에만 15개국 이상이 새로 서명했습니다. 한국은 나로우주센터를 민간에 전면 개방하기로 했지만, 민간 전용 발사장은 2030년 이후 완공될 전망입니다.</p>
+        <div class="risk"><strong>걸림돌:</strong> 미국 중심의 아르테미스 협정과 중국·러시아 중심의 ILRS로 규칙이 두 진영으로 갈라질 수 있습니다. 한국은 발사장 부족과 공역 규제가 과제입니다.</div>
+        <div class="watch"><strong>체크 지표:</strong> 국제 우주교통관리 규칙 합의, 우주자원 관련 법제화, 국내 민간 발사장 착공</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>25년 → 5년</b><span>임무 종료 저궤도 위성의 폐기 기한</span><small>2022 채택 · 미국 FCC</small></div>
+        <div class="kpi"><b>75개국+</b><span>아르테미스 협정 서명국</span><small>2026 · NASA 발표</small></div>
+        <div class="kpi"><b>2030년 이후</b><span>한국 민간 전용 발사장 완공 예상</span><small>2026 · 국내 보도</small></div>
+      </div>
+    </div>
+  </article>
+
+  <div class="takeaway" style="margin-top:20px">
+    <span class="lbl">종합</span>
+    <p>6개 Driver 중 4개가 초록입니다. 공급 측 두 Driver(발사비, 위성 양산)는 이미 임계점을 넘었고, 수요와 자본이 뒤따르고 있습니다. 남은 변수는 정부 예산의 지속성, 그리고 규칙과 발사장이 위성 증가 속도를 따라갈 수 있는지입니다. 두 노랑 신호의 변화가 향후 10년의 속도를 결정할 것입니다.</p>
+  </div>
+</section>
+
+<!-- 05 기술 -->
+<section class="section" id="tech">
+  <div class="section-header">
+    <div class="section-icon purple">05</div>
+    <h2 class="section-title">핵심 기술: 다음 단계를 여는 기술들</h2>
+  </div>
+  <p class="section-desc">재사용 로켓 다음으로 산업의 판을 바꿀 기술들입니다. 상용화 시점은 기술마다 크게 다릅니다.</p>
+
+  <div class="metro-grid">
+    <div class="metro-card c-blue">
+      <div class="card-tag">상용화 완료</div>
+      <h3>재사용 로켓</h3>
+      <p>한 번 쓰고 버리던 로켓을 착륙시켜 다시 씁니다. 여객기를 한 번 운항하고 폐기하던 것을 재운항으로 바꾼 셈입니다. 발사비를 10분의 1 수준으로 낮춘 핵심 기술입니다.</p>
+    </div>
+    <div class="metro-card c-orange">
+      <div class="card-tag">확산 중</div>
+      <h3>적층제조(3D 프린팅)</h3>
+      <p>엔진과 구조물을 금속 3D 프린터로 출력해 부품 수와 조립 공정을 크게 줄입니다. 개발 기간이 몇 년에서 몇 달로 단축됩니다. 제조업의 공정 혁신 기술이 그대로 적용되는 분야입니다.</p>
+    </div>
+    <div class="metro-card c-teal">
+      <div class="card-tag">시험 단계</div>
+      <h3>궤도 연료 보급</h3>
+      <p>우주에서 다른 우주선으로부터 연료를 옮겨 받는 기술입니다. 지상에서 연료를 모두 싣지 않아도 되므로 달·화성까지 보낼 수 있는 화물량이 크게 늘어납니다. 스타십의 달 착륙 임무에 필수입니다.</p>
+    </div>
+    <div class="metro-card c-green">
+      <div class="card-tag">개발 중</div>
+      <h3>이온 추진과 핵 추진</h3>
+      <p>이온 엔진은 전기로 가스를 가속해 적은 연료로 오래 비행합니다. 핵열 추진은 화학 로켓보다 효율이 2배 이상 높아 화성까지 걸리는 시간을 9개월에서 3~4개월로 줄일 수 있습니다. NASA는 2030년대 시험을 계획하고 있습니다.</p>
+    </div>
+    <div class="metro-card c-red">
+      <div class="card-tag">운영 중</div>
+      <h3>메가 컨스텔레이션</h3>
+      <p>수천~수만 기의 소형 위성을 하나의 네트워크로 운영하는 방식입니다. 위성 간 레이저 통신으로 데이터를 주고받습니다. 스타링크가 대표적이고, 아마존 카이퍼는 3,236기 배치를 계획하고 있습니다.</p>
+    </div>
+    <div class="metro-card c-yellow">
+      <div class="card-tag">확산 중</div>
+      <h3>우주 AI와 로봇</h3>
+      <p>화성과의 교신에는 최대 20분이 걸리므로 탐사 로버는 AI로 스스로 판단해야 합니다. 궤도에서 위성을 수리하거나 쓰레기를 포획하는 로봇 서비스도 2026~2027년 상용화를 앞두고 있습니다.</p>
+    </div>
+    <div class="metro-card c-purple">
+      <div class="card-tag">2030년대 시범</div>
+      <h3>우주 태양광 발전</h3>
+      <p>구름과 밤이 없는 궤도에서 태양광을 모아 마이크로파로 지상에 송전하는 개념입니다. 중국, 일본, 유럽이 2030년대 시범 운영을 목표로 연구하고 있습니다.</p>
+    </div>
+    <div class="metro-card c-navy">
+      <div class="card-tag">장기 과제</div>
+      <h3>우주 쓰레기 제거</h3>
+      <p>10cm 이상 파편만 약 3만 6천 개입니다. 총알보다 10배 빠른 속도로 움직여 작은 파편도 위성에 치명적입니다. 유럽 클리어스페이스-1과 일본 아스트로스케일이 포획 서비스를 준비 중이며, 관련 시장은 2030년 연 25억 달러 규모로 예상됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 산업별 시사점 -->
+<section class="section" id="implications">
+  <div class="section-header">
+    <div class="section-icon teal">06</div>
+    <h2 class="section-title">산업별 시사점: 자동차·제조·투자</h2>
+  </div>
+  <p class="section-desc">우주산업의 성장은 우주기업만의 일이 아닙니다. 양산 역량, 소재·부품 공급망, 모빌리티 기술을 가진 기존 산업에 새로운 기회가 열리고 있습니다.</p>
+
+  <div class="impl">
+    <div class="impl-col">
+      <header class="bg-blue"><h3>자동차·모빌리티</h3><p>차량이 위성 네트워크의 단말이 됩니다</p></header>
+      <ul>
+        <li><strong>위성 직접 연결이 커넥티드카 기본 사양으로</strong>휴대폰 위성 직접 연결 기술이 차량으로 확대되면 이동통신 음영지역에서도 긴급 구조, 원격 진단, 무선 업데이트(OTA)가 가능해집니다.</li>
+        <li><strong>자율주행을 위한 정밀 위치정보</strong>저궤도 위성 기반 위치 보정 서비스는 자율주행의 위치 정확도를 높이는 인프라가 됩니다.</li>
+        <li><strong>전동화 기술의 우주 전이</strong>배터리, 모터, 열관리 기술은 달 탐사 로버의 핵심 부품입니다. 현대차그룹은 2022년 국내 6개 연구기관과 달 탐사 모빌리티 공동 연구 협약을 맺었습니다.</li>
+      </ul>
+    </div>
+    <div class="impl-col">
+      <header class="bg-orange"><h3>제조업·소부장</h3><p>주문 제작에서 양산으로, 제조 역량이 경쟁력입니다</p></header>
+      <ul>
+        <li><strong>위성 양산은 자동차식 생산 관리의 영역</strong>주당 수십 기 생산에는 표준화, 공정 자동화, 품질 관리 같은 양산 노하우가 필요합니다. 기존 제조업체가 강점을 가진 분야입니다.</li>
+        <li><strong>소재·부품 공급망 수요</strong>복합소재, 내열 합금, 정밀 가공품, 전자부품, 태양전지, 안테나 수요가 늘고 있습니다. 위성 제조 시장은 2035년 867억 달러 규모로 전망됩니다.</li>
+        <li><strong>적층제조와 공정 혁신</strong>3D 프린팅 엔진·구조물은 부품 수를 줄이고 리드타임을 단축합니다. 우주에서 검증된 공정은 항공, 방산, 자동차로 다시 확산됩니다.</li>
+      </ul>
+    </div>
+    <div class="impl-col">
+      <header class="bg-green"><h3>투자</h3><p>밸류체인과 체크 지표로 구분해서 봐야 합니다</p></header>
+      <ul>
+        <li><strong>업스트림과 다운스트림</strong>업스트림(발사체, 위성 제조)은 성장성은 크지만 기술·발사 리스크가 큽니다. 다운스트림(통신, 데이터 서비스)은 시장 매출의 대부분을 차지하고 반복 매출 구조입니다.</li>
+        <li><strong>국내 밸류체인</strong>발사체 체계종합(한화에어로스페이스), 위성·항공(KAI), 위성 시스템(쎄트렉아이), 위성 통신 안테나(인텔리안테크), 민간 발사(이노스페이스) 등이 상장돼 있습니다.</li>
+        <li><strong>모니터링 지표</strong>kg당 발사비, 연간 발사 횟수, 위성 인터넷 가입자 수, 정부 예산과 국방 계약, SpaceX 상장 여부. 리스크 요인은 단일 기업 의존, 발사 실패, 규제 변화입니다.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="disclaimer">기업명은 산업 구조 이해를 위한 예시이며 투자 권유가 아닙니다.</p>
+</section>
+
+</div><!-- /wrapper -->
+
+<!-- 결론 -->
+<div class="verdict" id="verdict">
+  <div class="verdict-inner">
+    <h2>결론: 우주산업은 10년 안에 개화할까?</h2>
+    <p class="verdict-lead">답은 <strong>"이미 개화를 시작했고, 10년 안에 주력 분야는 본격적인 산업이 된다"</strong>입니다. 다만 모든 분야가 같은 속도로 움직이지는 않습니다.</p>
+    <div class="verdict-grid">
+      <div class="verdict-card">
+        <h3><span class="dot v-yes"></span>10년 내 본격 성장</h3>
+        <dl>
+          <dt>위성 통신</dt><dd>가입자 1,000만 명을 넘었고, 휴대폰 직접 연결로 시장이 더 넓어집니다.</dd>
+          <dt>발사 서비스</dt><dd>재사용이 표준이 됐고, 경쟁 공급자가 늘면서 가격 하락이 이어집니다.</dd>
+          <dt>지구관측·데이터</dt><dd>AI 분석과 결합해 농업, 금융, 보험, 물류로 확산 중입니다.</dd>
+        </dl>
+      </div>
+      <div class="verdict-card">
+        <h3><span class="dot v-maybe"></span>초기 상용화 단계</h3>
+        <dl>
+          <dt>민간 우주정거장</dt><dd>2030년 국제우주정거장 퇴역에 맞춰 첫 상업 정거장이 운영을 시작합니다.</dd>
+          <dt>달 탐사·운송</dt><dd>2028~2030년 미국과 중국의 유인 착륙을 계기로 달 운송 시장이 열립니다.</dd>
+          <dt>우주관광·제조</dt><dd>시장은 존재하지만 가격과 규모가 아직 대중화와는 거리가 멉니다.</dd>
+        </dl>
+      </div>
+      <div class="verdict-card">
+        <h3><span class="dot v-no"></span>2030년대 후반 이후</h3>
+        <dl>
+          <dt>화성 유인 탐사</dt><dd>생명 유지, 방사선, 장거리 운송 등 해결할 과제가 많습니다.</dd>
+          <dt>우주 자원 채굴</dt><dd>기술 실증과 국제 소유권 규칙이 먼저 정리돼야 합니다.</dd>
+          <dt>우주 태양광 발전</dt><dd>시범 운영 단계이며 경제성 검증이 필요합니다.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+<!-- 용어 -->
+<section class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-icon navy">07</div>
+    <h2 class="section-title">용어 정리</h2>
+  </div>
+  <div class="glossary-grid">
+    <dl class="gl-item"><dt>저궤도 (LEO)</dt><dd>고도 160~2,000km. 스타링크 위성과 국제우주정거장이 있는 궤도입니다. 지연시간이 짧아 통신에 유리합니다.</dd></dl>
+    <dl class="gl-item"><dt>정지궤도 (GEO)</dt><dd>고도 약 35,786km. 지구 자전과 같은 속도로 돌아 한 지점 위에 떠 있는 것처럼 보입니다. 방송·기상위성이 사용합니다.</dd></dl>
+    <dl class="gl-item"><dt>페이로드</dt><dd>로켓이 실어 나르는 화물(위성, 우주선 등)입니다. 발사비는 보통 페이로드 kg당 비용으로 비교합니다.</dd></dl>
+    <dl class="gl-item"><dt>재사용 발사체</dt><dd>발사 후 착륙해 다시 쓰는 로켓입니다. 현재는 주로 1단을 재사용하고, 스타십은 1·2단 완전 재사용을 목표로 합니다.</dd></dl>
+    <dl class="gl-item"><dt>메가 컨스텔레이션</dt><dd>수천 기 이상의 소형 위성을 하나의 네트워크로 운영하는 위성군입니다.</dd></dl>
+    <dl class="gl-item"><dt>D2C (Direct-to-Cell)</dt><dd>별도 단말 없이 일반 스마트폰이 위성과 직접 통신하는 기술입니다.</dd></dl>
+    <dl class="gl-item"><dt>업스트림 / 다운스트림</dt><dd>업스트림은 발사체·위성 제조 등 우주로 가는 단계, 다운스트림은 위성을 활용한 통신·데이터 서비스입니다.</dd></dl>
+    <dl class="gl-item"><dt>뉴스페이스</dt><dd>정부 주도(올드스페이스)에서 민간 기업이 주도하는 우주개발로의 전환을 가리키는 말입니다.</dd></dl>
+    <dl class="gl-item"><dt>아르테미스</dt><dd>NASA가 주도하는 유인 달 탐사 프로그램입니다. 아르테미스 협정은 이 프로그램과 관련한 국제 행동 원칙입니다.</dd></dl>
+    <dl class="gl-item"><dt>ILRS</dt><dd>중국과 러시아가 추진하는 국제 달 연구 기지입니다. 2035년 기본 기지 완성을 목표로 합니다.</dd></dl>
+    <dl class="gl-item"><dt>CAGR</dt><dd>연평균 성장률입니다. 2025~2035년 우주경제 전망은 약 11%입니다.</dd></dl>
+    <dl class="gl-item"><dt>우주 쓰레기</dt><dd>수명이 끝난 위성, 로켓 파편 등 궤도에 남은 인공 물체입니다. 미국은 임무 종료 후 5년 내 폐기를 의무화했습니다.</dd></dl>
+  </div>
+</section>
+
+<footer class="footer">
+  <p><strong>우주산업 백과사전</strong> · 2026년 10월 기준</p>
+  <p>출처: NASA, ESA, WEF, McKinsey, Novaspace, BryceTech, 우주항공청, 한국항공우주연구원, 각 기업 발표 및 언론 보도. 일부 2026년 수치(스타링크 가입자, SpaceX 상장 기업가치, 위성 생산 속도)는 2차 보도 기준이며 출처에 따라 차이가 있습니다. 2026~2034년 시장 규모는 2025년 실적과 2035년 전망치 사이를 연평균 성장률로 보간한 추정치입니다.</p>
+</footer>
+
+</div><!-- /wrapper -->
+
+<script>
+(function() {
+  var stars = document.getElementById('stars');
+  if (stars) {
+    for (var i = 0; i < 80; i++) {
+      var s = document.createElement('div');
+      s.className = 'star';
+      var size = (Math.random() * 2 + 1) + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.width = size;
+      s.style.height = size;
+      s.style.animationDelay = (Math.random() * 3) + 's';
+      stars.appendChild(s);
+    }
+  }
+
+  var plot = document.getElementById('vbarPlot');
+  var tip = document.getElementById('vbarTip');
+  if (plot) {
+    var data = [[2025,0.63],[2026,0.70],[2027,0.78],[2028,0.86],[2029,0.96],[2030,1.06],[2031,1.18],[2032,1.31],[2033,1.46],[2034,1.62],[2035,1.80]];
+    var max = 2.0, labeled = { 2025: 1, 2030: 1, 2035: 1 };
+    data.forEach(function(d) {
+      var col = document.createElement('div');
+      col.className = 'vbar-col' + (d[0] === 2025 ? ' actual' : '');
+      col.tabIndex = 0;
+      var pct = d[1] / max * 100;
+      var bar = document.createElement('div');
+      bar.className = 'vbar';
+      bar.style.height = pct + '%';
+      col.appendChild(bar);
+      if (labeled[d[0]]) {
+        var v = document.createElement('span');
+        v.className = 'vbar-val';
+        v.style.bottom = 'calc(' + pct + '% + 4px)';
+        v.textContent = '$' + d[1].toFixed(2) + '조';
+        col.appendChild(v);
+      }
+      var y = document.createElement('span');
+      y.className = 'vbar-year';
+      y.textContent = d[0];
+      col.appendChild(y);
+      var label = d[0] + '년 · $' + d[1].toFixed(2) + '조 (약 ' + Math.round(d[1] * 1370).toLocaleString() + '조 원) · ' + (d[0] === 2025 ? '실적' : '전망');
+      col.setAttribute('aria-label', label);
+      function show() {
+        tip.textContent = label;
+        tip.hidden = false;
+        var left = col.offsetLeft + col.offsetWidth / 2;
+        left = Math.max(100, Math.min(plot.clientWidth - 100, left));
+        tip.style.left = left + 'px';
+        tip.style.top = (100 - pct) + '%';
+      }
+      function hide() { tip.hidden = true; }
+      col.addEventListener('mouseenter', show);
+      col.addEventListener('focus', show);
+      col.addEventListener('mouseleave', hide);
+      col.addEventListener('blur', hide);
+      plot.appendChild(col);
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.scrollY - 56;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
